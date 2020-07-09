@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp7/main_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,17 +11,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('コリアンダー')
-        ),
-        body: Text(
-          'KBOYさんじゃないよ！',
-          style: TextStyle(
-            fontSize: 24,
-            ),
+      home: ChangeNotifierProvider<MainModel>(
+        create: (_) => MainModel(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('コリアンダー')
           ),
-        ),
+          body: Consumer<MainModel>(builder: (context, model, child) {
+              return Center(
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                     model.KboyText,
+                      style: TextStyle(
+                        fontSize: 24,
+                        ),
+                      ),
+                    RaisedButton(
+                        child: Text('ボタン'),
+                        onPressed: () {
+                          //　ここで何かをする
+                          model.changeKboyText();
+                        },
+                    )
+                  ],
+                ),
+              );
+            }
+          ),
+          ),
+      ),
       );
     }
 }
