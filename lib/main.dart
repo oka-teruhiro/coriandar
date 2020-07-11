@@ -28,11 +28,18 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                     RaisedButton(
-                        child: Text('ボタン'),
+                        child: Text('セット'),
                         onPressed: () {
                           //　ここで何かをする
                           model.changeKboyText();
                         },
+                    ),
+                    RaisedButton(
+                      child: Text('リセット'),
+                      onPressed: () {
+                        //　ここで何かをする
+                        model.resetKboytext();
+                      },
                     )
                   ],
                 ),

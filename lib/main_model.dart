@@ -8,4 +8,8 @@ class MainModel extends ChangeNotifier {
     KboyText = 'KBOYさんかっこいい';
     notifyListeners();
   }
+  void resetKboytext(){
+    KboyText = 'KBOY';
+    notifyListeners();
+  }
 }
